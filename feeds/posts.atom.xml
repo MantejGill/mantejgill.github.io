@@ -2964,4 +2964,4 @@ Prediction time: 0.263 s
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="python naivebayes classification supervised learning"></category></entry></feed>
+</summary><category term="python"></category><category term="naive bayes"></category><category term="classification"></category><category term="supervised learning"></category></entry></feed>
