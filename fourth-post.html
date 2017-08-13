@@ -72,7 +72,7 @@
 									</div>
 
 									<div class="pennant pennant-alt date">2016-06-08</div>
-									<h2>Classification of email corpus</h2>
+									<h2>Test</h2>
 									<style type="text/css">/*!
 *
 * IPython notebook
@@ -1045,169 +1045,15 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Project-to-predict-the-author-of-an-email">Project to predict the author of an email<a class="anchor-link" href="#Project-to-predict-the-author-of-an-email">¶</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="This-project-involves-the-preprocessing-of-the-dataset-(data-cleaning,-feature-extraction)-followed-by-the-fitting,testing-and">This project involves the preprocessing of the dataset (data cleaning, feature extraction) followed by the fitting,testing and<a class="anchor-link" href="#This-project-involves-the-preprocessing-of-the-dataset-(data-cleaning,-feature-extraction)-followed-by-the-fitting,testing-and">¶</a></h4><h4 id="prediction-using-the-Naive-Bayes-Model">prediction using the Naive Bayes Model<a class="anchor-link" href="#prediction-using-the-Naive-Bayes-Model">¶</a></h4>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"../tools/"</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">email_preprocess</span> <span class="kn">import</span> <span class="n">preprocess</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [2]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># features_train and features_test are the features for the training and testing datasets, respectively</span>
-<span class="c1"># labels_train and labels_test are the corresponding item labels</span>
-<span class="n">features_train</span><span class="p">,</span> <span class="n">features_test</span><span class="p">,</span> <span class="n">labels_train</span><span class="p">,</span> <span class="n">labels_test</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>no. of Chris training emails: 7936
-no. of Sara training emails: 7884
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Naive-Bayes-to-predict-the-email's-author">Naive Bayes to predict the email's author<a class="anchor-link" href="#Naive-Bayes-to-predict-the-email's-author">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features_train</span><span class="p">,</span><span class="n">labels_train</span><span class="p">)</span>
-<span class="n">GaussianNB</span><span class="p">()</span>
-<span class="k">print</span> <span class="s2">"training time:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">"s"</span>
-
-<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">features_test</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">"Prediction time:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">"s"</span>
-
-
-<span class="k">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span><span class="n">labels_test</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>training time: 1.896 s
-Prediction time: 0.263 s
-0.973265073948
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="email_parser.py">email_parser.py<a class="anchor-link" href="#email_parser.py">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="ch">#!/usr/bin/python</span>
-
-<span class="kn">from</span> <span class="nn">nltk.stem.snowball</span> <span class="kn">import</span> <span class="n">SnowballStemmer</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="n">stemmer</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s2">"english"</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">parseOutText</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-    <span class="sd">""" given an opened email file f, parse out all text below the</span>
-<span class="sd">        metadata block at the top</span>
-<span class="sd">        (in Part 2, you will also add stemming capabilities)</span>
-<span class="sd">        and return a string that contains all the words</span>
-<span class="sd">        in the email (space-separated) </span>
-<span class="sd">        </span>
-<span class="sd">        example use case:</span>
-<span class="sd">        f = open("email_file_name.txt", "r")</span>
-<span class="sd">        text = parseOutText(f)</span>
-<span class="sd">        </span>
-<span class="sd">        """</span>
-
-
-    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">### go back to beginning of file (annoying)</span>
-    <span class="n">all_text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-    <span class="c1">### split off metadata</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">all_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"X-FileName:"</span><span class="p">)</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="s2">""</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">></span> <span class="mi">1</span><span class="p">:</span>
-        <span class="c1">### remove punctuation</span>
-        <span class="n">text_string</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">),</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
-            
-        <span class="c1">### project part 2: comment out the line below</span>
-        <span class="n">words</span> <span class="o">=</span> <span class="n">text_string</span>
-        
-        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text_string</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
-            <span class="c1"># stem the word and add it to words</span>
-            <span class="n">words</span> <span class="o">+=</span> <span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' '</span>   
-        <span class="c1">### words = " ".join(str(x) for x in documents)</span>
-        <span class="c1">### split the text string into individual words, stem each word,</span>
-        <span class="c1">### and append the stemmed word to words (make sure there's a single</span>
-        <span class="c1">### space between each stemmed word)</span>
-        
-       
-
-
-    <span class="k">return</span> <span class="n">words</span>
-    
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
 </pre></div>
 </div>
 </div>
@@ -1218,43 +1064,8 @@ Prediction time: 0.263 s
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">ff</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"../text_learning/test_email.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">parseOutText</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">text</span>
-
-
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="email_preprocess.py">email_preprocess.py<a class="anchor-link" href="#email_preprocess.py">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="ch">#!/usr/bin/python</span>
-
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">import</span> <span class="nn">cPickle</span>
-<span class="kn">import</span> <span class="nn">numpy</span>
-
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectPercentile</span><span class="p">,</span> <span class="n">f_classif</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">learn</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">set_verbosity</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1265,37 +1076,32 @@ Prediction time: 0.263 s
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">words_file</span> <span class="o">=</span> <span class="s2">"../tools/word_data.pkl"</span><span class="p">,</span> <span class="n">authors_file</span><span class="o">=</span><span class="s2">"../tools/email_authors.pkl"</span><span class="p">):</span>
-    
-
-    <span class="n">authors_file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">authors_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span>
-    <span class="n">authors</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">authors_file_handler</span><span class="p">)</span>
-    <span class="n">authors_file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-    <span class="n">words_file_handler</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">words_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span>
-    <span class="n">word_data</span> <span class="o">=</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">words_file_handler</span><span class="p">)</span>
-    <span class="n">words_file_handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-    <span class="n">features_train</span><span class="p">,</span> <span class="n">features_test</span><span class="p">,</span> <span class="n">labels_train</span><span class="p">,</span> <span class="n">labels_test</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">word_data</span><span class="p">,</span> <span class="n">authors</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-
-
-    
-    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">sublinear_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_df</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                                 <span class="n">stop_words</span><span class="o">=</span><span class="s1">'english'</span><span class="p">)</span>
-    <span class="n">features_train_transformed</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features_train</span><span class="p">)</span>
-    <span class="n">features_test_transformed</span>  <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">features_test</span><span class="p">)</span>
-
-    <span class="n">selector</span> <span class="o">=</span> <span class="n">SelectPercentile</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">selector</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features_train_transformed</span><span class="p">,</span> <span class="n">labels_train</span><span class="p">)</span>
-    <span class="n">features_train_transformed</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">features_train_transformed</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-    <span class="n">features_test_transformed</span>  <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">features_test_transformed</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-
-   
-    <span class="k">print</span> <span class="s2">"no. of A's training emails:"</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">labels_train</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s2">"no. of B's emails:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels_train</span><span class="p">)</span><span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">labels_train</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">features_train_transformed</span><span class="p">,</span> <span class="n">features_test_transformed</span><span class="p">,</span> <span class="n">labels_train</span><span class="p">,</span> <span class="n">labels_test</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">mnist</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">'mnist'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span>
+<span class="n">test_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
 </pre></div>
 </div>
 </div>
